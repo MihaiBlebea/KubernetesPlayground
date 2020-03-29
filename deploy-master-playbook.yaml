@@ -1,0 +1,8 @@
+- hosts: master
+  become: false
+  tasks:
+    - name: Deploy k8s definitions to master node
+      copy:
+        src: definitions/
+        dest: definitions
+        force: yes

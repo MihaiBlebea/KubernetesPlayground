@@ -2,7 +2,7 @@ IMAGE_NAME = "hashicorp/bionic64"
 N = 2
 
 Vagrant.configure("2") do |config|
-    config.ssh.insert_key = false
+    config.ssh.insert_key = true
 
     config.vm.provider "virtualbox" do |v|
         v.memory = 1024

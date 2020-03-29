@@ -1,0 +1,1 @@
+Everything inside this dir will be deployed to master node by running `ansible-playbook deploy-master-playbook.yaml` in the root folder
