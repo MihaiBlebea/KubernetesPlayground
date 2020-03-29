@@ -1,4 +1,5 @@
 # Inspired by https://graspingtech.com/create-kubernetes-cluster/
+# And this one https://kubernetes.io/blog/2019/03/15/kubernetes-setup-using-ansible-and-vagrant/
 
 ---
 - hosts: all
@@ -70,6 +71,12 @@
             - kubeadm 
             - kubectl
       register: installed
+
+    # Need this hack to specify that the node the ip of the current node. Default takes the first interface one, not the private network
+    - name: Configure node ip
+      lineinfile:
+        path: /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
+        line: Environment="KUBELET_EXTRA_ARGS=--node-ip={{ node_ip }}"
 
     - name: Restart kubelet
       service:

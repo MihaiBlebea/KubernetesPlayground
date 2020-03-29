@@ -1,6 +1,11 @@
 - hosts: master
   become: false
+  gather_facts: false
   tasks:
+    - name: Delete old definitions
+      file:
+        state: absent
+        path: definitions/
     - name: Deploy k8s definitions to master node
       copy:
         src: definitions/

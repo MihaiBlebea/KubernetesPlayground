@@ -68,6 +68,12 @@
             - kubeadm 
             - kubectl
 
+    # Need this hack to specify that the node the ip of the current node. Default takes the first interface one, not the private network
+    - name: Configure node ip
+      lineinfile:
+        path: /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
+        line: Environment="KUBELET_EXTRA_ARGS=--node-ip={{ node_ip }}"
+
     - name: Restart kubelet
       service:
         name: kubelet
