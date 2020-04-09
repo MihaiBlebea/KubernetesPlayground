@@ -9,7 +9,7 @@ Vagrant.configure("2") do |config|
     config.vm.provider "virtualbox" do |v|
         v.memory = 1024
         v.cpus = 2
-        vb.gui = false
+        v.gui = false
     end
       
     config.vm.define "master" do |master|
@@ -24,6 +24,10 @@ Vagrant.configure("2") do |config|
                 node_ip: "192.168.50.10",
             }
         end
+
+        master.vm.provider "virtualbox" do |v|
+            v.name = "master"
+        end
     end
 
     (1..N).each do |i|
@@ -36,6 +40,10 @@ Vagrant.configure("2") do |config|
                 ansible.extra_vars = {
                     node_ip: "192.168.50.#{i + 10}",
                 }
+            end
+
+            node.vm.provider "virtualbox" do |v|
+                v.name = "node-#{i}"
             end
         end
     end
