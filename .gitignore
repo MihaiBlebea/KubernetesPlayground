@@ -1,3 +1,3 @@
 .vagrant
 join
-definitions/*.yaml
+# definitions/*.yaml

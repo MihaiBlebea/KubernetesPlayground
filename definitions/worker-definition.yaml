@@ -1,0 +1,24 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: worker-deployment
+    labels:
+        app: onlineshop
+        name: worker-deployment
+spec:
+    template:
+        metadata:
+            name: worker-pod
+            labels:
+                app: onlineshop
+                name: worker-pod
+        spec:
+            containers:
+                - name: worker
+                  image: serbanblebea/online-shop-worker:v0.2
+    replicas: 1
+    selector:
+        matchLabels:
+            app: onlineshop
+            name: worker-pod

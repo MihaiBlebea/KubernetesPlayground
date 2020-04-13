@@ -1,0 +1,60 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: shop-deployment
+    labels:
+        app: onlineshop
+        name: shop-deployment
+spec:
+    template:
+        metadata:
+            name: shop-pod
+            labels:
+                app: onlineshop
+                name: shop-pod
+        spec:
+            containers:
+                - name: shop
+                  image: serbanblebea/online-shop-shop:v0.2
+    replicas: 1
+    selector:
+        matchLabels:
+            app: onlineshop
+            name: shop-pod
+
+---
+apiVersion: v1 
+kind: Service
+metadata:
+    name: shop
+    labels:
+        app: onlineship
+        name: shop
+spec:
+    type: ClusterIP
+    ports:
+        - targetPort: 8000
+          port: 8000
+    selector:
+        app: onlineshop
+        name: shop-pod
+
+---
+apiVersion: v1 
+kind: Service
+metadata:
+    name: shop-external
+    labels:
+        app: onlineship
+        name: shop-external
+spec:
+    type: NodePort
+    ports:
+        - targetPort: 8000
+          port: 8000
+          nodePort: 30077
+    selector:
+        app: onlineshop
+        name: shop-pod
+                  

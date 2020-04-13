@@ -1,0 +1,59 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: customer-deployment
+    labels:
+        app: onlineshop
+        name: customer-deployment
+spec:
+    template:
+        metadata:
+            name: customer-pod
+            labels:
+                app: onlineshop
+                name: customer-pod
+        spec:
+            containers:
+                - name: customer
+                  image: serbanblebea/online-shop-customer:v0.2
+    replicas: 1
+    selector:
+        matchLabels:
+            app: onlineshop
+            name: customer-pod
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+    name: customer
+    labels:
+        app: onlineshop
+        name: customer
+spec:
+    type: ClusterIP
+    ports:
+        - targetPort: 8000
+          port: 8000
+    selector:
+        app: onlineshop
+        name: customer-pod
+        
+---
+apiVersion: v1
+kind: Service
+metadata:
+    name: customer-external
+    labels:
+        app: onlineshop
+        name: customer-external
+spec:
+    type: NodePort
+    ports:
+        - targetPort: 8000
+          port: 8000
+          nodePort: 30076
+    selector:
+        app: onlineshop
+        name: customer-pod
