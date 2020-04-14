@@ -1,5 +1,7 @@
 # Kubernetes playground
 
+https://mihaiblebea.github.io/kubernetes-playground/
+
 
 ### Start Kubernetes cluster with one cmd
 
