@@ -2,6 +2,12 @@
 
 https://mihaiblebea.github.io/kubernetes-playground/
 
+### Index
+- [ ] Resources
+- [ ] Security & Roles
+- [ ] Secrets & Config
+- [ ] Network
+- [ ] Storage & Volumes
 
 ### Start Kubernetes cluster with one cmd
 
