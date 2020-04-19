@@ -6,7 +6,7 @@ https://mihaiblebea.github.io/kubernetes-playground/
 - [ ] Resources
 - [ ] Security & Roles
 - [ ] Secrets & Config
-- [ ] [Network](/blob/master/docs/network.md)
+- [ ] [Network](/docs/network.md)
 - [ ] Storage & Volumes
 
 ### Start Kubernetes cluster with one cmd
