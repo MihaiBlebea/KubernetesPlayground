@@ -20,6 +20,9 @@
     - All there is left to do is to allow port forwarding on node-2 with `sudo nano /proc/sys/net/ipv4/ip_forward` and switch from 0 to 1
 
 ## Usefull commands
+- `netstat` - Tool. Ex: `netstat -ln`
+- `ip` - IP management tool
+- `arp` - Show arp (Address Resolution Protocol) table
 - `route` - Get all the routes that the linux box can reach
 - `ip route add 192.168.10.1/24 via 192.168.1.1` - Add a new rule. Reach 192.168.10.1 from the switch/router with ip 192.168.1.1
 - `ip route add default via 192.168.1.1` - Add a new rule. Reach any other unknown ip from the switch/router with ip 192.168.1.1. You can also substitute default with 0.0.0.0
