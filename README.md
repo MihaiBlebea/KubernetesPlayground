@@ -121,3 +121,7 @@ roleRef:
     name: developer
     apiGroup: rbac.authorization.k8s.io
 ```
+
+## Install Nginx Ingress Controller to a bare metal Kubernetes cluster
+
+- Run this command `kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.34.1/deploy/static/provider/baremetal/deploy.yaml`

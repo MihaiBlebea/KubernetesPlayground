@@ -1,0 +1,2 @@
+setup: 
+	vagrant up
